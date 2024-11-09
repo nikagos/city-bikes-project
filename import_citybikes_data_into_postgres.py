@@ -178,7 +178,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    # Register the flow
-    etl_web_to_postgres.register(project_name="citybike")
-
     etl_web_to_postgres(args)
