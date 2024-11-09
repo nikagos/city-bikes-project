@@ -4,7 +4,7 @@ from prefect.deployments.runner import DockerImage
 from import_citybikes_data_into_postgres import etl_web_to_postgres
 
 user = os.getenv("USER")
-github_user = os.getenv("USER")
+github_user = os.getenv("GITHUB_USER")
 
 @flow(log_prints=True)
 def my_flow():

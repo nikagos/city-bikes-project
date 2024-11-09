@@ -3,6 +3,9 @@ FROM prefecthq/prefect:2-latest
 # Set working directory
 WORKDIR /opt/prefect/flows
 
+# Copy the requirements.txt file into the container
+COPY requirements.txt .
+
 # Install dependencies
 RUN pip install -r requirements.txt
 
