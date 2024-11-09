@@ -1,6 +1,7 @@
 import requests
 import json
 import pandas as pd
+import datetime
 from prefect import flow, task
 from prefect_sqlalchemy import SqlAlchemyConnector
 from sqlalchemy.engine import Engine
