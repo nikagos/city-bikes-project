@@ -7,8 +7,7 @@ from prefect_sqlalchemy import SqlAlchemyConnector
 from sqlalchemy.engine import Engine
 
 
-# Define the API URL
-network_info_url = "http://api.citybik.es/v2/networks" # network data
+network_info_url = "http://api.citybik.es/v2/networks"
 network_ids = []
 bike_station_data_dfs = []
 current_date = datetime.now()
@@ -122,7 +121,7 @@ def get_bike_data(url: str, network_id: str) -> pd.DataFrame:
 
 
 def ingest_into_postgres(df: pd.DataFrame, engine: Engine, table_name: str) -> None:
-
+    """The main function to create Postgres table and ingest the data"""
     print('Creating table in the database: %s' % table_name)
     df.head(n=0).to_sql(name=table_name, con=engine, if_exists='replace')
     print("Table created.")
