@@ -10,7 +10,7 @@ def my_flow():
 
 if __name__ == "__main__":
     my_flow.from_source(
-        source="https://github.com/nikagos/city-bikes-project.git",
+        source="git@github.com:nikagos/city-bikes-project.git",
         entrypoint="import_citybikes_data_into_postgres.py:etl_web_to_postgres"
     ).deploy(
         name="etl-citybike-web-to-postgres-flow-deployment",
