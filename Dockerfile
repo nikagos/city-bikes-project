@@ -9,10 +9,10 @@ FROM prefecthq/prefect:2-latest
 WORKDIR /opt/prefect/flows
 
 # Install dependencies
-RUN pip install pandas sqlalchemy psycopg2-binary pyarrow "numpy<2" prefect
+RUN pip install pandas sqlalchemy psycopg2-binary pyarrow "numpy<2" prefect prefect_sqlalchemy
 
 # Copy the flow script to the container
 COPY import_citybikes_data_into_postgres.py .
 
 # Set the entry point to start the flow using Prefect
-ENTRYPOINT ["prefect", "run", "flow", "-p", "/opt/prefect/flows/import_citybikes_data_into_postgres.py"]
+ENTRYPOINT [ "python", "import_citybikes_data_into_postgres.py" ]
