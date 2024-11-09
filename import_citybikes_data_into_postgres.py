@@ -1,12 +1,10 @@
-import argparse, os, sys
-from sqlalchemy import create_engine
-from sqlalchemy.engine import Engine
-from datetime import datetime
 import requests
 import json
 import pandas as pd
-from pathlib import Path
 from prefect import flow, task
+from prefect_sqlalchemy import SqlAlchemyConnector
+from sqlalchemy.engine import Engine
+
 
 # Define the API URL
 network_info_url = "http://api.citybik.es/v2/networks" # network data
@@ -14,20 +12,6 @@ network_ids = []
 bike_station_data_dfs = []
 current_date = datetime.now()
 date_str = current_date.strftime("%Y%m%d")
-
-
-@task(log_prints=True)
-def create_postgres_engine(params) -> Engine:
-
-    user = params.user
-    password = params.password
-    host = params.host
-    port = params.port
-    db = params.db
-
-    engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}')
-
-    return engine
 
 
 @task(log_prints=True)
@@ -149,33 +133,25 @@ def ingest_into_postgres(df: pd.DataFrame, engine: Engine, table_name: str) -> N
 def etl_web_to_postgres(args) -> None:
     """The main ETL function"""
 
-    engine = create_postgres_engine(args)
+    # Import the citybikes-postgres-connector built in Prefect as the database engine
+    database_block = SqlAlchemyConnector.load("citybikes-postgres-connector")
 
-    # Ingest network data
-    df_networks = get_networks(network_info_url)
-    df_networks.name = "networks"
-    ingest_into_postgres(df_networks, engine, df_networks.name)
+    with database_block.get_connection(begin=False) as engine:
 
+        # Ingest network data
+        df_networks = get_networks(network_info_url)
+        df_networks.name = "networks"
+        ingest_into_postgres(df_networks, engine, df_networks.name)
 
-    # Ingest bike station data
-    for network_id in network_ids:
-        print(f"Processing network_id: {network_id}.")
-        bike_station_data_dfs.append(get_bike_data(network_info_url, network_id))
+        # Ingest bike station data
+        for network_id in network_ids:
+            print(f"Processing network_id: {network_id}.")
+            bike_station_data_dfs.append(get_bike_data(network_info_url, network_id))
 
-    bike_station_data_df_final = pd.concat(bike_station_data_dfs, ignore_index=True)
-    bike_station_data_df_final.name = "bike_station_data"
-    ingest_into_postgres(bike_station_data_df_final, engine, bike_station_data_df_final.name)
+        bike_station_data_df_final = pd.concat(bike_station_data_dfs, ignore_index=True)
+        bike_station_data_df_final.name = "bike_station_data"
+        ingest_into_postgres(bike_station_data_df_final, engine, bike_station_data_df_final.name)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Ingest Parquet data to Postgres')
-
-    parser.add_argument('--user', required=True, help='user name for postgres')
-    parser.add_argument('--password', required=True, help='password for postgres')
-    parser.add_argument('--host', required=True, help='host for postgres')
-    parser.add_argument('--port', required=True, help='port for postgres')
-    parser.add_argument('--db', required=True, help='database name for postgres')
-
-    args = parser.parse_args()
-
-    etl_web_to_postgres(args)
+    etl_web_to_postgres()
