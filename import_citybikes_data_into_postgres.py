@@ -130,7 +130,7 @@ def ingest_into_postgres(df: pd.DataFrame, engine: Engine, table_name: str) -> N
 
 
 @flow()
-def etl_web_to_postgres(args) -> None:
+def etl_web_to_postgres() -> None:
     """The main ETL function"""
 
     # Import the citybikes-postgres-connector built in Prefect as the database engine
