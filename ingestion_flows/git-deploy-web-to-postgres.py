@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     my_flow.from_source(
         source=f"git@github.com:{github_user}/city-bikes-project.git",
-        entrypoint="import_citybikes_data_into_postgres.py:etl_web_to_postgres"
+        entrypoint="ingestion_flows/import_citybikes_data_into_postgres.py:etl_web_to_postgres"
     ).deploy(
         name="etl-citybike-web-to-postgres-flow-deployment",
         work_pool_name="my-work-pool",
