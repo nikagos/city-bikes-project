@@ -37,7 +37,7 @@ variable "GOOGLE_CLOUD_STORAGE_BUCKET_NAME" {
 variable "GOOGLE_CLOUD_STORAGE_BUCKET_LOCATION" {
   description = "Location of then bucket name you want to add csv file to"
   type = string
-  default = "de-zoomcamp-bucket-via-terraform"
+  default = "US"
 }
 
 variable "GOOGLE_CLOUD_STORAGE_BUCKET_CLASS" {

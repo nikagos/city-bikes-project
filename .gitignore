@@ -1,0 +1,3 @@
+ingestion_flows/citybike_postgres_data
+terraform/*
+!*.tf
