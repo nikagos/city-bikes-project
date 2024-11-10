@@ -1,0 +1,42 @@
+
+version: 2
+
+models:
+  - name: my_first_dbt_model
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: my_second_dbt_model
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: network_bike_data
+    description: City bike network data with station data
+    columns:
+      - name: station_id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+
+sources:
+    - name: main
+      description: Raw city bike data downloaded from https://api.citybik.es/v2/
+      schema: public  # The schema where the source table exists
+      tables:
+        - name: bike_station_data
+          description:
+            Station-level data for city bikes
+        - name: networks
+          description:
+            Nework data for city bikes

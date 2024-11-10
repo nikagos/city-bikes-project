@@ -1,0 +1,95 @@
+[0m14:35:00.026915 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0c525979b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0c52597f20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0c5262e2d0>]}
+
+
+============================== 14:35:00.031027 | f108800a-bba1-43a9-b319-2b89163d5735 ==============================
+[0m14:35:00.031027 [info ] [MainThread]: Running with dbt=1.8.7
+[0m14:35:00.032510 [debug] [MainThread]: running dbt with arguments {'fail_fast': 'False', 'log_cache_events': 'False', 'invocation_command': 'dbt init citybike-project', 'indirect_selection': 'eager', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'write_json': 'True', 'quiet': 'False', 'empty': 'None', 'warn_error': 'None', 'target_path': 'None', 'partial_parse': 'True', 'debug': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'cache_selected_only': 'False', 'printer_width': '80', 'use_colors': 'True', 'log_path': 'logs', 'use_experimental_parser': 'False', 'log_format': 'default', 'static_parser': 'True', 'profiles_dir': '/home/nickk/.dbt', 'no_print': 'None'}
+[0m14:35:52.057508 [debug] [MainThread]: Starter project path: /home/nickk/anaconda3/lib/python3.12/site-packages/dbt/include/starter_project
+[0m14:35:52.068895 [info ] [MainThread]: 
+Your new dbt project "citybike_project" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m14:35:52.069847 [info ] [MainThread]: Setting up your profile.
+[0m14:35:57.890703 [error] [MainThread]: Encountered an error:
+
+[0m14:35:57.898773 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/nickk/anaconda3/lib/python3.12/site-packages/dbt/cli/requires.py", line 138, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nickk/anaconda3/lib/python3.12/site-packages/dbt/cli/requires.py", line 101, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nickk/anaconda3/lib/python3.12/site-packages/dbt/cli/main.py", line 470, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "/home/nickk/anaconda3/lib/python3.12/site-packages/dbt/task/init.py", line 347, in run
+    self.setup_profile(profile_name)
+  File "/home/nickk/anaconda3/lib/python3.12/site-packages/dbt/task/init.py", line 262, in setup_profile
+    adapter = self.ask_for_adapter_choice()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nickk/anaconda3/lib/python3.12/site-packages/dbt/task/init.py", line 243, in ask_for_adapter_choice
+    numeric_choice = click.prompt(prompt_msg, type=click.INT)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nickk/anaconda3/lib/python3.12/site-packages/click/termui.py", line 164, in prompt
+    value = prompt_func(prompt)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/home/nickk/anaconda3/lib/python3.12/site-packages/click/termui.py", line 147, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m14:35:57.900786 [debug] [MainThread]: Resource report: {"command_name": "init", "command_wall_clock_time": 57.958626, "process_user_time": 2.238732, "process_kernel_time": 0.273802, "process_mem_max_rss": "96168", "process_in_blocks": "21912", "process_out_blocks": "72", "command_success": false}
+[0m14:35:57.901931 [debug] [MainThread]: Command `dbt init` failed at 14:35:57.901688 after 57.96 seconds
+[0m14:35:57.902716 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0c5251c560>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0c52573f80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0c523e1e20>]}
+[0m14:35:57.903410 [debug] [MainThread]: Flushing usage events
+[0m14:36:54.469347 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe4cfd11820>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe4cedaeb40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe4cedac620>]}
+
+
+============================== 14:36:54.472216 | 6346d2f6-037a-40f5-8fb6-1c92529da5d2 ==============================
+[0m14:36:54.472216 [info ] [MainThread]: Running with dbt=1.8.7
+[0m14:36:54.473303 [debug] [MainThread]: running dbt with arguments {'fail_fast': 'False', 'introspect': 'True', 'profiles_dir': '/home/nickk/.dbt', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'use_colors': 'True', 'quiet': 'False', 'printer_width': '80', 'target_path': 'None', 'version_check': 'True', 'partial_parse': 'True', 'log_format': 'default', 'write_json': 'True', 'empty': 'None', 'invocation_command': 'dbt init citybike-project', 'warn_error': 'None', 'no_print': 'None', 'debug': 'False', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True', 'log_path': 'logs', 'use_experimental_parser': 'False', 'log_cache_events': 'False'}
+[0m14:37:02.542207 [info ] [MainThread]: A project called citybike_project already exists here.
+[0m14:37:02.543853 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 8.157839, "process_user_time": 2.087043, "process_kernel_time": 0.139477, "process_mem_max_rss": "95808", "process_out_blocks": "8", "process_in_blocks": "0"}
+[0m14:37:02.544775 [debug] [MainThread]: Command `dbt init` succeeded at 14:37:02.544584 after 8.16 seconds
+[0m14:37:02.545391 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe4ce543fb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe4ce375ee0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe4cef87b00>]}
+[0m14:37:02.546154 [debug] [MainThread]: Flushing usage events
+[0m14:37:25.841924 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f839371d880>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f839371ea20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f83957a9730>]}
+
+
+============================== 14:37:25.844497 | c14e2e41-cba7-403d-a180-9a94e2945e44 ==============================
+[0m14:37:25.844497 [info ] [MainThread]: Running with dbt=1.8.7
+[0m14:37:25.845539 [debug] [MainThread]: running dbt with arguments {'profiles_dir': '/home/nickk/.dbt', 'static_parser': 'True', 'empty': 'None', 'target_path': 'None', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'warn_error': 'None', 'fail_fast': 'False', 'log_format': 'default', 'invocation_command': 'dbt init citybike_project', 'debug': 'False', 'write_json': 'True', 'partial_parse': 'True', 'log_path': 'logs', 'quiet': 'False', 'cache_selected_only': 'False', 'use_colors': 'True', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'no_print': 'None', 'use_experimental_parser': 'False', 'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False'}
+[0m14:37:25.856024 [debug] [MainThread]: Starter project path: /home/nickk/anaconda3/lib/python3.12/site-packages/dbt/include/starter_project
+[0m14:37:25.859430 [info ] [MainThread]: 
+Your new dbt project "citybike_project" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m14:37:25.860164 [info ] [MainThread]: Setting up your profile.
+[0m14:40:31.907324 [info ] [MainThread]: Profile citybike_project written to /home/nickk/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m14:40:31.909221 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 186.14351, "process_user_time": 2.053518, "process_kernel_time": 0.144082, "process_mem_max_rss": "100040", "process_in_blocks": "9416", "process_out_blocks": "88"}
+[0m14:40:31.910279 [debug] [MainThread]: Command `dbt init` succeeded at 14:40:31.910070 after 186.14 seconds
+[0m14:40:31.910979 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f8392f0e0f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f839173aed0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f839356fbf0>]}
+[0m14:40:31.911661 [debug] [MainThread]: Flushing usage events
