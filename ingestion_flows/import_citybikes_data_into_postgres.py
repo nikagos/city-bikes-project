@@ -5,6 +5,7 @@ from datetime import datetime
 from prefect import flow, task
 from prefect_sqlalchemy import SqlAlchemyConnector
 from sqlalchemy.engine import Engine
+from sqlalchemy import text
 from geopy.geocoders import Nominatim
 
 
@@ -161,6 +162,8 @@ def etl_web_to_postgres() -> None:
     with database_block.get_connection(begin=False) as engine:
 
         # Ingest network data
+        # Drop the networks table with all dependencies
+        engine.execute(text("DROP TABLE networks CASCADE"))
         df_networks = get_networks(network_info_url)
         df_networks.name = "networks"
         ingest_into_postgres(df_networks, engine, df_networks.name)
