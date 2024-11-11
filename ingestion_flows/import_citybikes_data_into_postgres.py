@@ -6,7 +6,6 @@ from prefect import flow, task
 from prefect_sqlalchemy import SqlAlchemyConnector
 from sqlalchemy.engine import Engine
 from sqlalchemy import text
-from geopy.geocoders import Nominatim
 
 
 network_info_url = "http://api.citybik.es/v2/networks"
@@ -14,26 +13,6 @@ network_ids = []
 bike_station_data_dfs = []
 current_date = datetime.now()
 date_str = current_date.strftime("%Y%m%d")
-
-
-@task(log_prints=True)
-
-def get_address(latitude: float, longitude: float) -> str:
-    # Initialize the Nominatim geolocator with a user agent
-    geolocator = Nominatim(user_agent="geoapiExercises")
-
-    # Perform reverse geocoding
-    location = geolocator.reverse((latitude, longitude), exactly_one=True)
-    
-    # Check if a location was found
-    if location and location.address:
-        return location.address
-    else:
-        return "Address not found"
-
-
-    return address
-
 
 
 @task(log_prints=True)
@@ -65,7 +44,6 @@ def get_networks(url: str) -> pd.DataFrame:
                         "country": network["location"]["country"],
                         "latitude": network["location"]["latitude"],
                         "longitude": network["location"]["longitude"]
-                        # "address": get_address(network["location"]["latitude"], network["location"]["longitude"])
                     })
 
                     network_ids.append(network["id"])
@@ -120,7 +98,6 @@ def get_bike_data(url: str, network_id: str) -> pd.DataFrame:
                     "timestamp": station["timestamp"],
                     "latitude": station["latitude"],
                     "longitude": station["longitude"],
-                    "address": get_address(station["latitude"], station["longitude"]),
                     "free_bikes": station["free_bikes"],
                     "empty_slots": station["empty_slots"]
                 })
