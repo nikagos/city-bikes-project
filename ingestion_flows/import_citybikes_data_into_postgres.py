@@ -63,8 +63,8 @@ def get_networks(url: str) -> pd.DataFrame:
                         "city": network["location"]["city"],
                         "country": network["location"]["country"],
                         "latitude": network["location"]["latitude"],
-                        "longitude": network["location"]["longitude"],
-                        "address": get_address(network["location"]["latitude"], network["location"]["longitude"])
+                        "longitude": network["location"]["longitude"]
+                        # "address": get_address(network["location"]["latitude"], network["location"]["longitude"])
                     })
 
                     network_ids.append(network["id"])
