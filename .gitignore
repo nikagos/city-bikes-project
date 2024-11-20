@@ -4,3 +4,5 @@ ingestion_flows/citybike_data
 ingestion_flows/citybike_postgres_data
 terraform/*
 !*.tf
+*.parquet
+ingestion_flows/__pycache__/*.pyc

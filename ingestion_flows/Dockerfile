@@ -10,7 +10,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # Copy the flow script to the container
-COPY import_citybikes_data_into_postgres.py .
+COPY etl_web_to_gcs_to_bq.py .
 
 # Set the entry point to start the flow using Prefect
-ENTRYPOINT [ "python", "import_citybikes_data_into_postgres.py" ]
+ENTRYPOINT [ "python", "etl_web_to_gcs_to_bq.py" ]
