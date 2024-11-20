@@ -6,3 +6,6 @@ terraform/*
 !*.tf
 *.parquet
 ingestion_flows/__pycache__/import_citybikes_data_into_postgres.cpython-312.pyc
+*.gitkeep
+target/
+logs/

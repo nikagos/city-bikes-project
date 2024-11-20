@@ -15,7 +15,7 @@ NETWORK_IDS = []
 DATASET_DFS = []
 DATASET_FILES = []
 BIKE_STATION_DATA_DFS = []
-CURRENT_DATE = datetime.now().strftime("%Y%m%d")
+# CURRENT_DATE = datetime.now().strftime("%Y%m%d")
 PROJECT_NAME="steady-webbing-436216-k1"
 COUNTRY_CODES = []
 
@@ -194,7 +194,7 @@ def etl_web_to_gcs_to_bq() -> None:
 
     df_networks.name = "networks"
     DATASET_DFS.append(df_networks)
-    networks_file = Path(f"{df_networks.name}_{CURRENT_DATE}.parquet")
+    networks_file = Path(f"{df_networks.name}.parquet")
     DATASET_FILES.append(networks_file)
 
     # # Use this for testing a subset of network_id's
@@ -212,7 +212,7 @@ def etl_web_to_gcs_to_bq() -> None:
 
     bike_station_data_df_final.name = "bike_station_data"
     DATASET_DFS.append(bike_station_data_df_final)
-    bike_station_data_file = Path(f"{bike_station_data_df_final.name}_{CURRENT_DATE}.parquet")
+    bike_station_data_file = Path(f"{bike_station_data_df_final.name}.parquet")
     DATASET_FILES.append(bike_station_data_file)
 
 
