@@ -215,6 +215,8 @@ def etl_web_to_gcs_to_bq() -> None:
 
 
     for df, dataset_file in zip(DATASET_DFS, DATASET_FILES):
+        
+        # Save downloaded data locally
         path = write_local(df, dataset_file)
         
         # Write data into "citybike_data" GCS bucket
