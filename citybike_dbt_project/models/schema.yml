@@ -22,21 +22,28 @@ models:
 
   - name: bike_station_with_network_data
     description: Base bike station data with network information attached
-    # columns:
-    #   - name: id
-    #     description: "The primary key for this table"
-    #     data_tests:
-    #       - unique
-    #       - not_null
+    columns:
+      - name: station_id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: companies
+    description: Clean list of all companies and countries
+    columns:
+      - name: unique_id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
 
 sources:
-    - name: dezoomcamp
-      description: Raw data from the City Bike API
-      schema: dezoomcamp  # The schema where the source table exists
-      tables:
-        - name: networks_20241120
-          description:
-            Raw network data from the City Bike API
-        - name: objectsbike_station_data_20241120
-          description:
-            Raw bike station data from the City Bike API
+  - name: dezoomcamp
+    description: Raw data from the City Bike API
+    schema: dezoomcamp  # The schema where the source table exists
+    tables:
+      - name: networks
+        description: Raw network data from the City Bike API
+      - name: bike_station_data
+        description: Raw bike station data from the City Bike API
