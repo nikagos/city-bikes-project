@@ -123,7 +123,9 @@ def get_bike_data(network_id: str) -> pd.DataFrame:
 @task(log_prints=True)
 def write_local(df: pd.DataFrame, dataset_file: str) -> Path:
     """Write DataFrame out locally as parquet file"""
-    path = f"citybike_data/{dataset_file.stem}.parquet"
+    directory = "citybike_data"
+    Path(directory).mkdir(parents=True, exist_ok=True)  # Create directory if it doesn't exist
+    path = f"{directory}/{dataset_file.stem}.parquet"
     df.to_parquet(path)
     return path
 
