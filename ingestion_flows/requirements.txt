@@ -5,3 +5,4 @@ pyarrow==14.0.2
 prefect==3.0.4
 prefect-gcp==0.6.1
 protobuf==5.28.2
+gcsfs==2024.10.0
