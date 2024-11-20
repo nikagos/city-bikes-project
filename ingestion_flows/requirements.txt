@@ -1,5 +1,7 @@
+numpy==1.26.4
 pandas==2.2.2
 psycopg2-binary==2.9.9
 pyarrow==14.0.2
 prefect==3.0.4
-numpy==1.26.4
+prefect-gcp==0.6.1
+protobuf==5.28.2

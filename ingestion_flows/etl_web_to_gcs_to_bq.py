@@ -41,7 +41,7 @@ def get_networks(url: str) -> pd.DataFrame:
 
             for network in networks:
                 COUNTRY_CODES.append(network["location"]["country"])
-                if network["location"]["country"] in ("US","GR","GB","FR","JP","ES"):
+                if network["location"]["country"] in ("US"): #,"GR","GB","FR","JP","ES"):
                     parsed_data.append({
                         "network_id": network["id"],
                         "network_name": network["name"],
